@@ -13,12 +13,13 @@
   "main": "main.js",
   "folders": "lib",
   "dependencies": {
-    "eyespect": "~0.1.8",
     "async": "~0.1.22",
-    "temp": "~0.8.3",
-    "walk": "~2.2.1",
+    "eyespect": "~0.1.8",
+    "lodash": "^4.17.4",
+    "pathhash": "~1.0.0",
     "rimraf": "~2.0.2",
-    "pathhash": "~1.0.0"
+    "temp": "~0.8.3",
+    "walk": "~2.2.1"
   },
   "devDependencies": {
     "should": "~1.2.1",

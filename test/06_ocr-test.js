@@ -34,11 +34,35 @@ describe('06 OCR Test', function() {
       var options = [
         '-psm 1',
         '-l dia',
+        '-c tessedit_create_pdf=1',
         'alphanumeric'
       ]
       ocr(tif_path, options, function (err, extract) {
         should.not.exist(err);
         should.exist(extract);
+        extract.length.should.be.above(20, 'wrong ocr output');
+        done();
+      });
+    });
+  });
+
+  it('should ocr tif file and generate box file', function(done) {
+    this.timeout(100*1000);
+    this.slow(20*1000);
+    var file_name = 'single_page_raw.tif';
+    var relative_path = path.join('test_data',file_name);
+    var tif_path = path.join(__dirname, relative_path);
+    fs.exists(tif_path, function (exists) {
+      assert.ok(exists, 'tif file does not exist like it should at path: ' + tif_path);
+      var options = [
+        '-psm 1',
+        'alphanumeric',
+        '-c tessedit_create_tsv=1'
+      ]
+      ocr(tif_path, options, function (err, extract) {
+        should.not.exist(err);
+        should.exist(extract);
+        console.log(JSON.stringify(extract,null,4));
         extract.length.should.be.above(20, 'wrong ocr output');
         done();
       });
