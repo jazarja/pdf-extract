@@ -63,7 +63,7 @@ describe('06 OCR Test', function() {
         should.not.exist(err);
         should.exist(extract);
         console.log(JSON.stringify(extract,null,4));
-        extract.length.should.be.equal(1, 'wrong ocr output');
+        extract.length.should.be.above(20, 'wrong ocr output');
         done();
       });
     });
